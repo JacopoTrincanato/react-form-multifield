@@ -24,8 +24,10 @@ const addedPost = {
 
 //creo il componente Form
 export default function Form() {
+    const [formData, setFormData] = useState(addedPost)
     const [initialPosts, setInitialPosts] = useState(posts)
     const [newPosts, setNewPosts] = useState('')
+
     //creo una funzione per aggiungere un titolo
     function addPostTitle(e) {
         e.preventDefault()
@@ -55,6 +57,23 @@ export default function Form() {
             <form onSubmit={addPostTitle}>
 
                 <input type="text" placeholder="Inserisci il titolo" className={style.placeholder} value={newPosts} onChange={e => setNewPosts(e.target.value)} />
+
+                <input type="text" placeholder="Inserisci l'immagine" className={style.placeholder} name="image" value={formData.image} />
+
+                <textarea name="content" id="content" rows="5" className={style.placeholder} value={formData.content}></textarea>
+
+                <select name="category" id="category" className={style.placeholder}>
+                    <option value="published">Published</option>
+                    <option value="notPublished">not Published</option>
+                </select>
+
+                <div>
+                    <input type="checkbox" value={formData.tags} />html
+                    <input type="checkbox" value={formData.tags} />css
+                    <input type="checkbox" value={formData.tags} />js
+                    <input type="checkbox" value={formData.tags} />php
+                </div>
+
 
 
 
