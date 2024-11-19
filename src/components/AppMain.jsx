@@ -32,8 +32,6 @@ export default function AppMain() {
 
             <Form />
 
-            {posts.map(post => <Card key={post.id} post={post} />)}
-
             <section>
                 <h3>Tag Utilizzati: {uniqueTags && uniqueTags.map((tag, index) => (
                     <span key={index}>

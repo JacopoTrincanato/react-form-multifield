@@ -21,7 +21,7 @@ const addedPost = {
     title: "",
     image: "",
     content: "",
-    category: "published",
+    category: "",
     tags: [],
     published: true
 }
@@ -30,7 +30,6 @@ const addedPost = {
 export default function Form() {
     const [formData, setFormData] = useState(addedPost)
     const [initialPosts, setInitialPosts] = useState(posts)
-    {/*const [newPosts, setNewPosts] = useState('')*/ }
 
     //creo una funzione per aggiungere un titolo
     function addPost(e) {
@@ -70,87 +69,83 @@ export default function Form() {
 
     //eseguo il return
     return (
-        <section>
-            <h2>Aggiungi un nuovo post utilizzando il form</h2>
+        <>
+            <section>
+                <h2>Aggiungi un nuovo post utilizzando il form</h2>
 
-            <form onSubmit={addPost}>
+                <form onSubmit={addPost}>
 
-                <input type="text"
-                    placeholder="Inserisci il titolo"
-                    className={style.placeholder}
-                    name="title"
-                    required
-                    value={formData.title}
-                    onChange={handleFormField}
-                />
-
-                <input type="text"
-                    placeholder="Inserisci l'immagine"
-                    className={style.placeholder}
-                    name="image"
-                    value={formData.image}
-                    onChange={handleFormField} />
-
-                <textarea name="content"
-                    placeholder="Inserisci il contenuto"
-                    id="content" rows="5"
-                    className={style.placeholder}
-                    value={formData.content}
-                    onChange={handleFormField}>
-
-                </textarea>
-
-                <select name="category"
-                    id="category"
-                    className={style.placeholder}
-                    value={formData.published ? "published" : "notPublished"}
-                    onChange={handleFormField}>
-                    <option value="published">Published</option>
-                    <option value="notPublished">not Published</option>
-                </select>
-
-                <div>
-                    <input type="checkbox"
-                        value={formData.tags.includes('html')}
+                    <input type="text"
+                        placeholder="Inserisci il titolo"
+                        className={style.placeholder}
+                        name="title"
+                        required
+                        value={formData.title}
                         onChange={handleFormField}
-                    />html
+                    />
 
-                    <input type="checkbox"
-                        value={formData.tags.includes('css')}
-                        onChange={handleFormField}
-                    />css
+                    <input type="text"
+                        placeholder="Inserisci l'immagine"
+                        className={style.placeholder}
+                        name="image"
+                        value={formData.image}
+                        onChange={handleFormField} />
 
-                    <input type="checkbox"
-                        value={formData.tags.includes('js')}
-                        onChange={handleFormField}
-                    />js
+                    <textarea name="content"
+                        placeholder="Inserisci il contenuto"
+                        id="content" rows="5"
+                        className={style.placeholder}
+                        value={formData.content}
+                        onChange={handleFormField}>
 
-                    <input type="checkbox"
-                        value={formData.tags.includes('php')}
-                        onChange={handleFormField}
-                    />php
+                    </textarea>
 
-                </div>
+                    <select name="published"
+                        id="category"
+                        className={style.placeholder}
+                        value={formData.published ? "published" : "notPublished"}
+                        onChange={handleFormField}>
+                        <option value="published">Published</option>
+                        <option value="notPublished">not Published</option>
+                    </select>
+
+                    <div>
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />html
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />css
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />js
+
+                        <input type="checkbox"
+                            name="tags"
+                            value={formData.tags}
+                            onChange={handleFormField}
+                        />php
+
+                    </div>
 
 
 
-                <AddButton />
-                {/*<button className={style.formBtn} type="submit" id="button">INVIA</button>*/}
+                    <AddButton />
 
-            </form>
+                </form>
+
+
+            </section>
 
             {initialPosts.map((post, index) => <Card key={post.id} post={post}><button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button></Card>)}
-
-            {/*< ul >
-                <li><h2>Titoli dei post</h2></li>
-                {initialPosts.map((post, index) => <li className={style.liItem} key={index}>{post.title}
-                    <button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button>
-                </li>)}
-
-            </ ul>*/}
-
-
-
-        </section>
+        </>
     )
 }
