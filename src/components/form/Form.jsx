@@ -53,7 +53,7 @@ export default function Form() {
 
         setFormData({
             ...formData,
-            [e.target.name]: value
+            [e.target.title]: value
         })
     }
 
@@ -100,15 +100,15 @@ export default function Form() {
 
             </form>
 
-            {posts.map(post => <Card key={post.id} data={post}></Card>)}
+            {posts.map((post, index) => <Card key={post.id} data={post}><button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button></Card>)}
 
-            < ul >
+            {/*< ul >
                 <li><h2>Titoli dei post</h2></li>
                 {initialPosts.map((post, index) => <li className={style.liItem} key={index}>{post.title}
                     <button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button>
                 </li>)}
 
-            </ ul>
+            </ ul>*/}
 
 
 
