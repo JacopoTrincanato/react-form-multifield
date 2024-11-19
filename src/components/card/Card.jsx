@@ -5,24 +5,24 @@ import style from './Card.module.css'
 import Button from '../buttons/Button';
 
 //creo il componente Card e gli aggiungo la props post
-export default function Card({ post }) {
+export default function Card({ cardPost }) {
 
     //eseguo il return
     return (
         <>
-            {post.published && <div className={style.card}>
+            {cardPost && cardPost.published && <div className={style.card}>
                 <div className={`${style.cardTop} ${style.dFlex}`}>
-                    <img src={post.image} alt="immagine" />
+                    <img src={cardPost.image} alt="immagine" />
                 </div>
 
                 <div className={style.cardBottom}>
-                    <h3 className={style.mt1}>{post.title}</h3>
-                    <p className={style.mt1}>{post.content}</p>
+                    <h3 className={style.mt1}>{cardPost.title}</h3>
+                    <p className={style.mt1}>{cardPost.content}</p>
 
                     <p className={style.mt1}>
-                        {post.tags && post.tags.map((tag, index) => (
+                        {Array.isArray(cardPost.tags) && cardPost.tags.map((tag, index) => (
                             <span className={style[tag]} key={index}>
-                                {tag}{index < post.tags.length - 1 ? ' ' : ''}
+                                {tag}{index < cardPost.tags.length - 1 ? ' ' : ''}
                             </span>
 
 

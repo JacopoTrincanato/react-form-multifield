@@ -1,6 +1,3 @@
-//importo la card
-import Card from "./card/Card";
-
 //importo il form
 import Form from "./form/Form";
 

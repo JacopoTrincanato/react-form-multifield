@@ -145,7 +145,7 @@ export default function Form() {
 
             </section>
 
-            {initialPosts.map((post, index) => <Card key={post.id} post={post}><button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button></Card>)}
+            {initialPosts.map((post, index) => <Card key={post.id} cardPost={post}><button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button></Card>)}
         </>
     )
 }
