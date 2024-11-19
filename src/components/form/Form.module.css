@@ -5,6 +5,9 @@ form {
     gap: 10px;
 }
 
+input[type="checkbox"] {
+    margin-left: 1rem;
+}
 
 .formBtn {
     background-color: rgb(14, 238, 14);

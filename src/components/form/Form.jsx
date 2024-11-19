@@ -29,11 +29,18 @@ export default function Form() {
     const [newPosts, setNewPosts] = useState('')
 
     //creo una funzione per aggiungere un titolo
-    function addPostTitle(e) {
+    function addPost(e) {
         e.preventDefault()
 
-        setInitialPosts([...initialPosts, { title: newPosts }])
+        const newItem = {
+            id: Date.now(),
+            ...formData
+        }
+
+        setInitialPosts([newItem, ...initialPosts])
         setNewPosts('')
+
+        setFormData(addedPost)
 
     }
 
@@ -54,13 +61,13 @@ export default function Form() {
             <h2>Aggiungi un nuovo post utilizzando il form</h2>
             <AddButton />
 
-            <form onSubmit={addPostTitle}>
+            <form onSubmit={addPost}>
 
                 <input type="text" placeholder="Inserisci il titolo" className={style.placeholder} value={newPosts} onChange={e => setNewPosts(e.target.value)} />
 
                 <input type="text" placeholder="Inserisci l'immagine" className={style.placeholder} name="image" value={formData.image} />
 
-                <textarea name="content" id="content" rows="5" className={style.placeholder} value={formData.content}></textarea>
+                <textarea name="content" placeholder="Inserisci il contenuto" id="content" rows="5" className={style.placeholder} value={formData.content}></textarea>
 
                 <select name="category" id="category" className={style.placeholder}>
                     <option value="published">Published</option>
