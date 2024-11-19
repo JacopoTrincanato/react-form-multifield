@@ -7,9 +7,20 @@ import style from "./Form.module.css"
 //importo i post
 import posts from "../../data/posts";
 
+//importo AddButton 
+import AddButton from "../buttons/AddButton";
+
 //importo le icone di fontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+const addedPost = {
+    title: "",
+    image: "",
+    content: "",
+    tags: [],
+    published: true
+}
 
 //creo il componente Form
 export default function Form() {
@@ -38,9 +49,14 @@ export default function Form() {
     //eseguo il return
     return (
         <section>
+            <h2>Aggiungi un nuovo post utilizzando il form</h2>
+            <AddButton />
+
             <form onSubmit={addPostTitle}>
 
                 <input type="text" placeholder="Inserisci il titolo" className={style.placeholder} value={newPosts} onChange={e => setNewPosts(e.target.value)} />
+
+
 
                 <button className={style.formBtn} type="submit" id="button">INVIA</button>
 
