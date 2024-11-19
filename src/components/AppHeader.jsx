@@ -1,3 +1,6 @@
+//importo AddButton
+import AddButton from "./buttons/AddButton";
+
 //creo il componente header
 export default function AppHeader() {
     //creo una variabile dove inserire il titolo
@@ -7,6 +10,7 @@ export default function AppHeader() {
     return (
         <header>
             <h1>{title}</h1>
+            <AddButton />
         </header>
 
     )
