@@ -108,25 +108,25 @@ export default function Form() {
                     <div>
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags.includes('html')}
+                            value={formData.tags}
                             onChange={handleFormField}
                         />html
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags.includes('css')}
+                            value={formData.tags}
                             onChange={handleFormField}
                         />css
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags.includes('js')}
+                            value={formData.tags}
                             onChange={handleFormField}
                         />js
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags.includes('php')}
+                            value={formData.tags}
                             onChange={handleFormField}
                         />php
 
