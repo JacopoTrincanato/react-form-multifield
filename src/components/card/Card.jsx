@@ -2,7 +2,7 @@
 import style from './Card.module.css'
 
 //importo il bottone
-import Button from '../button/Button';
+import Button from '../buttons/Button';
 
 //creo il componente Card e gli aggiungo la props post
 export default function Card({ post }) {
