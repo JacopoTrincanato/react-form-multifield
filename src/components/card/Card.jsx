@@ -10,7 +10,7 @@ export default function Card({ post }) {
     //eseguo il return
     return (
         <>
-            {post.published && <div className={style.card}>
+            {post && post.published && <div className={style.card}>
                 <div className={`${style.cardTop} ${style.dFlex}`}>
                     <img src={post.image} alt="immagine" />
                 </div>

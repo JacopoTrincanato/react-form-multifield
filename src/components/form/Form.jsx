@@ -10,6 +10,9 @@ import posts from "../../data/posts";
 //importo AddButton 
 import AddButton from "../buttons/AddButton";
 
+//importo la Card
+import Card from "../card/Card";
+
 //importo le icone di fontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -44,6 +47,16 @@ export default function Form() {
 
     }
 
+    function handleFormField(e) {
+
+        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
+
+        setFormData({
+            ...formData,
+            [e.target.name]: value
+        })
+    }
+
     //creo una funzione per cancellare un titolo del post
     function eliminate(e) {
 
@@ -59,34 +72,35 @@ export default function Form() {
     return (
         <section>
             <h2>Aggiungi un nuovo post utilizzando il form</h2>
-            <AddButton />
 
             <form onSubmit={addPost}>
 
                 <input type="text" placeholder="Inserisci il titolo" className={style.placeholder} value={newPosts} onChange={e => setNewPosts(e.target.value)} />
 
-                <input type="text" placeholder="Inserisci l'immagine" className={style.placeholder} name="image" value={formData.image} />
+                <input type="text" placeholder="Inserisci l'immagine" className={style.placeholder} name="image" value={formData.image} onChange={handleFormField} />
 
-                <textarea name="content" placeholder="Inserisci il contenuto" id="content" rows="5" className={style.placeholder} value={formData.content}></textarea>
+                <textarea name="content" placeholder="Inserisci il contenuto" id="content" rows="5" className={style.placeholder} value={formData.content} onChange={handleFormField}></textarea>
 
-                <select name="category" id="category" className={style.placeholder}>
+                <select name="category" id="category" className={style.placeholder} value={formData.published} onChange={handleFormField}>
                     <option value="published">Published</option>
                     <option value="notPublished">not Published</option>
                 </select>
 
                 <div>
-                    <input type="checkbox" value={formData.tags} />html
-                    <input type="checkbox" value={formData.tags} />css
-                    <input type="checkbox" value={formData.tags} />js
-                    <input type="checkbox" value={formData.tags} />php
+                    <input type="checkbox" value={formData.tags} onChange={handleFormField} />html
+                    <input type="checkbox" value={formData.tags} onChange={handleFormField} />css
+                    <input type="checkbox" value={formData.tags} onChange={handleFormField} />js
+                    <input type="checkbox" value={formData.tags} onChange={handleFormField} />php
                 </div>
 
 
 
-
-                <button className={style.formBtn} type="submit" id="button">INVIA</button>
+                <AddButton />
+                {/*<button className={style.formBtn} type="submit" id="button">INVIA</button>*/}
 
             </form>
+
+            {posts.map(post => <Card key={post.id} data={post}></Card>)}
 
             < ul >
                 <li><h2>Titoli dei post</h2></li>
