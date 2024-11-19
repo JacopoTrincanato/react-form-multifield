@@ -13,17 +13,13 @@ import AddButton from "../buttons/AddButton";
 //importo la Card
 import Card from "../card/Card";
 
-//importo le icone di fontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
 const addedPost = {
     title: "",
     image: "",
     content: "",
     category: "",
     tags: [],
-    published: true
+    published: false
 }
 
 //creo il componente Form
@@ -112,25 +108,25 @@ export default function Form() {
                     <div>
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value={formData.tags.includes('html')}
                             onChange={handleFormField}
                         />html
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value={formData.tags.includes('css')}
                             onChange={handleFormField}
                         />css
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value={formData.tags.includes('js')}
                             onChange={handleFormField}
                         />js
 
                         <input type="checkbox"
                             name="tags"
-                            value={formData.tags}
+                            value={formData.tags.includes('php')}
                             onChange={handleFormField}
                         />php
 
@@ -145,7 +141,7 @@ export default function Form() {
 
             </section>
 
-            {initialPosts.map((post, index) => <Card key={post.id} cardPost={post}><button onClick={eliminate} data-index={index} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button></Card>)}
+            {initialPosts.map((post, index) => <Card key={post.id} cardPost={post} eliminatePost={eliminate} cardIndex={index}></Card>)}
         </>
     )
 }

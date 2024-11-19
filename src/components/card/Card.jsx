@@ -4,8 +4,12 @@ import style from './Card.module.css'
 //importo il bottone
 import Button from '../buttons/Button';
 
+//importo le icone di fontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 //creo il componente Card e gli aggiungo la props post
-export default function Card({ cardPost }) {
+export default function Card({ cardPost, cardIndex, eliminatePost }) {
 
     //eseguo il return
     return (
@@ -29,6 +33,8 @@ export default function Card({ cardPost }) {
                         ))}
                     </p>
                     <Button />
+
+                    <button onClick={eliminatePost} data-index={cardIndex} className={style.deleteBtn}><FontAwesomeIcon icon={faTrash} /></button>
                 </div>
             </div>
             }
