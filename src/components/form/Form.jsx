@@ -28,6 +28,7 @@ export default function Form() {
     const [formData, setFormData] = useState(addedPost)
     const [initialPosts, setInitialPosts] = useState(posts)
 
+
     //creo una funzione per aggiungere un titolo
     function addPost(e) {
         //Impedisco il comportamento predefinito del form
@@ -119,7 +120,7 @@ export default function Form() {
                         <option value="notPublished">not Published</option>
                     </select>
 
-                    {/* Checkbox per i vari tag */}
+                    {/* Checkbox per i vari tag*/}
                     <div>
                         <input type="checkbox"
                             name="tags"
@@ -146,6 +147,7 @@ export default function Form() {
                         />php
 
                     </div>
+
 
 
                     {/* Componente AddButton*/}
