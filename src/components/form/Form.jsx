@@ -13,6 +13,7 @@ import AddButton from "../buttons/AddButton";
 //importo la Card
 import Card from "../card/Card";
 
+//Creo il modello iniziale del post
 const addedPost = {
     title: "",
     image: "",
@@ -29,23 +30,29 @@ export default function Form() {
 
     //creo una funzione per aggiungere un titolo
     function addPost(e) {
+        //Impedisco il comportamento predefinito del form
         e.preventDefault()
 
+        //Creo un nuovo oggetto post combinando un ID univoco (Date.now()) con i dati del modulo
         const newItem = {
             id: Date.now(),
             ...formData
         }
 
+        //Aggiorno la lista dei post aggiungendo il nuovo post in cima
         setInitialPosts([newItem, ...initialPosts])
 
+        //Resetto il modulo al modello iniziale dopo l'invio
         setFormData(addedPost)
 
     }
 
     function handleFormField(e) {
 
+        //Determino il valore del campo in base al tipo (checkbox o altri campi come input)
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
 
+        //Aggiorno formData con setFormData usando il nome del campo (e.target.name) come chiave e il valore inserito
         setFormData({
             ...formData,
             [e.target.name]: value
@@ -55,10 +62,13 @@ export default function Form() {
     //creo una funzione per cancellare un titolo del post
     function eliminate(e) {
 
+        //Ottengo l'indice del post da eliminare dal pulsante associato
         const deleteTitle = Number(e.target.getAttribute('data-index'))
 
+        //Filtro la lista dei post, escludendo quello con l'indice specificato
         const newPost = initialPosts.filter((post, index) => index != deleteTitle)
 
+        //Aggiorno lo stato con la lista filtrata
         setInitialPosts(newPost)
 
     }
@@ -71,6 +81,7 @@ export default function Form() {
 
                 <form onSubmit={addPost}>
 
+                    {/* Campo per il titolo del post */}
                     <input type="text"
                         placeholder="Inserisci il titolo"
                         className={style.placeholder}
@@ -80,6 +91,7 @@ export default function Form() {
                         onChange={handleFormField}
                     />
 
+                    {/* Campo per il link all'immagine */}
                     <input type="text"
                         placeholder="Inserisci l'immagine"
                         className={style.placeholder}
@@ -87,6 +99,7 @@ export default function Form() {
                         value={formData.image}
                         onChange={handleFormField} />
 
+                    {/* Campo per il contenuto del post */}
                     <textarea name="content"
                         placeholder="Inserisci il contenuto"
                         id="content" rows="5"
@@ -96,6 +109,7 @@ export default function Form() {
 
                     </textarea>
 
+                    {/* Selettore per impostare se il post è pubblicato */}
                     <select name="published"
                         id="category"
                         className={style.placeholder}
@@ -105,6 +119,7 @@ export default function Form() {
                         <option value="notPublished">not Published</option>
                     </select>
 
+                    {/* Checkbox per i vari tag */}
                     <div>
                         <input type="checkbox"
                             name="tags"
@@ -133,7 +148,7 @@ export default function Form() {
                     </div>
 
 
-
+                    {/* Componente AddButton*/}
                     <AddButton />
 
                 </form>

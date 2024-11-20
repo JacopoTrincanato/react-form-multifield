@@ -27,16 +27,19 @@ export default function AppMain() {
     return (
         <main>
 
+            {/* Componente Form */}
             <Form />
 
             <section>
-                <h3>Tag Utilizzati: {uniqueTags && uniqueTags.map((tag, index) => (
-                    <span key={index}>
-                        {tag}{index < uniqueTags.length - 1 ? ', ' : ''}
-                    </span>
-                ))}
+                <h3>
+                    {/* Mostra un elenco di tag unici. */}
+                    Tag Utilizzati: {uniqueTags && uniqueTags.map((tag, index) => (
+                        <span key={index}>
+                            {/* Ogni tag è separato da una virgola, tranne l'ultimo elemento. */}
+                            {tag}{index < uniqueTags.length - 1 ? ', ' : ''}
+                        </span>
+                    ))}
                 </h3>
-
             </section>
         </main>
 
